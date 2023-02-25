@@ -105,9 +105,15 @@ namespace NotebookHW
 
         private void SizeError()
         {
+            AbsSize();
             if (int.TryParse(SizeTextBox.Text, out _) != true)
             {
-                MessageBox.Show("Размер текста должен быть числом", "Шрифт", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Размер текста должен быть числом.", "Шрифт", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                SizeFlag = false;
+            }
+            else if (value > 1000)
+            {
+                MessageBox.Show("Размер текста не должен привышать 1000.", "Шрифт", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 SizeFlag = false;
             }
             else
@@ -129,7 +135,7 @@ namespace NotebookHW
             }
             if (count < 1 || OutlineTextBox.Text == "")
             {
-                MessageBox.Show("Данное начертание не определено для выбранного шрифта.\nВыберите начертание из списка.", "Шрифт", MessageBoxButtons.OK, MessageBoxIcon.Question);
+                MessageBox.Show("Данное начертание не определено для выбранного шрифта.\nВыберите начертание из списка.", "Шрифт", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 OutlineFlag = false;
             }
             else
